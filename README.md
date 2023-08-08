@@ -20,3 +20,18 @@ To use it:
 
     $ semantix-ai --help
 
+# DEV - Publish to pypi
+
+    $ poetry config pypi-token.pypi <YOUR_PYPI_TOKEN>
+    $ poetry build
+    $ poetry publish
+
+# DEV - Bump version
+
+    $ poetry version patch | minor | major | premajor | preminor | prepatch | prerelease
+
+See more at [Poetry version command docs](https://python-poetry.org/docs/cli/#version)
+
+# DEV - Commit message semantics
+
+See at [Conventional Commits](https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716)
