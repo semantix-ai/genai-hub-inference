@@ -18,6 +18,11 @@ Else if you want to run local, clone this repository and install it with poetry:
 
 To use it:
 
+First, make sure you have a valid API key. You can get one at [Semantix Gen AI Hub](https://home.ml.semantixhub.com/)
+
+Set an environment variable with your api secret:
+
+    $ export SEMANTIX_API_SECRET=<YOUR_API_SECRET>
     $ semantix-ai --help
 
 # DEV - Publish to pypi
