@@ -25,6 +25,26 @@ Set an environment variable with your api secret:
     $ export SEMANTIX_API_SECRET=<YOUR_API_SECRET>
     $ semantix-ai --help
 
+## Using ModelClient
+
+The `ModelClient` class allows you to interact with different models. To create a model client, you need to specify the type of model you want to use. The available options are "alpaca", "llama2", and "cohere".
+
+Here's an example of how to create a model client and generate text using the Alpaca model:
+
+```python
+from semantix_genai_inference import ModelClient
+
+# Create an Alpaca model client
+client = ModelClient.create("alpaca")
+
+# Generate text using the Alpaca model
+prompt = "Once upon a time"
+generated_text = client.generate(prompt)
+print(generated_text)
+```
+
+You can replace "alpaca" with "llama2" or "cohere" to use the Llama2 or Cohere models, respectively.
+
 # DEV - Publish to pypi
 
     $ poetry config pypi-token.pypi <YOUR_PYPI_TOKEN>
