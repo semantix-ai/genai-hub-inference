@@ -38,12 +38,12 @@ class ModelClient:
     
     def _load_config(self):
         """
-        Load the config.yaml file from the same directory where the application was executed
+        Load the semantix.yaml file from the same directory where the application was executed
         """
 
         # check if file exists
-        if not os.path.isfile("config.yaml"):
-            raise Exception("No config.yaml file found in current directory. The model client factory will not work, you may work instantiating the models directly.")
-        with open("config.yaml") as f:
+        if not os.path.isfile("semantix.yaml"):
+            raise Exception("No semantix.yaml file found in current directory. The model client factory will not work, you may work instantiating the models directly.")
+        with open("semantix.yaml") as f:
             config = yaml.safe_load(f)
         return config

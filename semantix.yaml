@@ -1,0 +1,11 @@
+providers:
+  semantixHub:
+    serverId: "64f9fab1c818a7a417ea3f5d"
+    version: "v0"
+    apiSecret: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzZXJ2ZXJJZCI6IjY0ZjlmYWIxYzgxOGE3YTQxN2VhM2Y1ZCIsInRva2VuIjoiNjRmOWZhYjFjODE4YTdhNDE3ZWEzZjVkIiwiaWF0I"
+  cohere:
+    apiKey: "38daLZiX0DRe37e16SMTYIqSLLkqfRnMJ23bIOCW"
+    generate:
+      model: "command"
+      version: "v1"
+
