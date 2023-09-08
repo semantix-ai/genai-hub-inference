@@ -10,3 +10,4 @@ config.yaml
 .coverage
 
 **/*__pycache__
+.aider*
