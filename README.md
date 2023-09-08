@@ -25,6 +25,27 @@ Set an environment variable with your api secret:
     $ export SEMANTIX_API_SECRET=<YOUR_API_SECRET>
     $ semantix-ai --help
 
+## Configuring with semantix.yaml
+
+Before using the ModelClient, you need to configure the library with a `semantix.yaml` file. This file should be placed in the same directory where your application is executed. The `semantix.yaml` file should contain the necessary API keys and other configuration options for the models you want to use.
+
+Here's an example of a `semantix.yaml` file:
+
+```yaml
+providers:
+  semantixHub:
+    serverId: "YOUR INFERENCE SERVER ID HERE"
+    version: "v0"
+    apiSecret: "YOUR SEMANTIX GEN AI HUB API TOKEN"
+  cohere:
+    apiKey: "YOUR COHERE API KEY"
+    generate:
+      model: "command"
+      version: "v1"
+```
+
+Replace the placeholders with your actual API keys and other configuration options.
+
 ## Using ModelClient
 
 The `ModelClient` class allows you to interact with different models. To create a model client, you need to specify the type of model you want to use. The available options are "alpaca", "llama2", and "cohere".
