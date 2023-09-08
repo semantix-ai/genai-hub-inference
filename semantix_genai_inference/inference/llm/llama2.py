@@ -9,7 +9,7 @@ class Llama2InferenceClient(SemantixGenClient):
         super().__init__(inference_server_id, api_secret, version=version)
         self._type = "llama2"
 
-    def complete(self, prompt: str, temperature: Optional[float] = None, top_p: Optional[int] = None, 
+    def generate(self, prompt: str, temperature: Optional[float] = None, top_p: Optional[int] = None, 
                       top_k: Optional[int] = None, max_new_tokens: Optional[int] = None, 
                       num_beams: Optional[int] = None):
         return asyncio.run(self._complete_async(prompt, temperature, top_p, top_k, max_new_tokens, num_beams))    

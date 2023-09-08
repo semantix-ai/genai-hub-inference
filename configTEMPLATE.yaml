@@ -1,0 +1,10 @@
+providers:
+  semantixHub:
+    serverId: "YOUR INFERENCE SERVER ID HERE"
+    version: "v0"
+    apiSecret: "YOUR SEMANTIX GEN AI HUB API TOKEN"
+  cohere:
+    apiKey: "YOUR COHERE API KEY"
+    generate:
+      model: "command"
+      version: "v1"

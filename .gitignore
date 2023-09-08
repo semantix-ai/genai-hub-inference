@@ -4,6 +4,8 @@ dist/
 build/
 *.egg-info/
 
+config.yaml
+
 .tox/
 .coverage
 
