@@ -3,6 +3,7 @@ import yaml
 from semantix_genai_inference.inference.llm.alpaca import AlpacaInferenceClient
 from semantix_genai_inference.inference.llm.llama2 import Llama2InferenceClient
 from semantix_genai_inference.inference.llm.cohere import CohereInferenceClient
+from semantix_genai_inference.inference.llm.openai import OpenAIInferenceClient
 
 class ModelClient:
 
@@ -33,6 +34,12 @@ class ModelClient:
             generate_model = cohere["generate"]["model"]
             version = cohere["generate"]["version"]
             return CohereInferenceClient(api_key, generate_model, version=version)
+        elif client_type == "openai":
+            openai = config["providers"]["openai"]
+            api_key = openai["apiKey"] if "apiKey" in openai else None
+            model = openai["chat"]["model"]
+            version = openai["chat"]["version"]
+            return OpenAIInferenceClient(api_key, model, version=version)
         else:
             raise Exception(f"Invalid model client type: {client_type}")
     
