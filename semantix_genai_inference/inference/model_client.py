@@ -47,10 +47,13 @@ class ModelClient:
         """
         Load the semantix.yaml file from the same directory where the application was executed
         """
-
+        # check if SEMANTIX_CONFIG_FILE env exists otherwise use default
+        config_file = "semantix.yaml"
+        if "SEMANTIX_CONFIG_FILE" in os.environ:
+            config_file = os.environ["SEMANTIX_CONFIG_FILE"]
         # check if file exists
-        if not os.path.isfile("semantix.yaml"):
-            raise Exception("No semantix.yaml file found in current directory. The model client factory will not work, you may work instantiating the models directly.")
-        with open("semantix.yaml") as f:
+        if not os.path.isfile(config_file):
+            raise Exception(f"No {config_file} file found. The model client factory will not work, you may work instantiating the models directly.")
+        with open(config_file) as f:
             config = yaml.safe_load(f)
         return config
