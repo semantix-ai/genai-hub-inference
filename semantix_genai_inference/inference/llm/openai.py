@@ -78,22 +78,25 @@ class OpenAIInferenceClient(OpenAIClient):
                     async for line in response.content:
                         yield line
 
-class OpenAIInferenceClientTests:
+    async def _embeddings_async(self, text, user=None):
+        # check if text is a list of dicts
+        if isinstance(text, list):
+            if not isinstance(text[0], dict):
+                raise ValueError("If text is a list, it must be a list of dicts with keys 'role' and 'content'.")
+            else:
+                # transform the dicts into a single string
+                text = " ".join([str(message) for message in text])
 
-    def test_generate_async_with_streaming(self):
-        client = OpenAIInferenceClient("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", model="gpt-4")
-        prompt = [{"role": "user", "content": "Once upon a time"}]
-        temperature = 0.5
-        top_p = 1.0
-        n = 1
-        presence_penalty = 0.0
-        frequency_penalty = 0.0
-        async def test():
-            async for line in client.generate_stream(prompt, temperature=temperature, top_p=top_p, n=n,
-                                                presence_penalty=presence_penalty, frequency_penalty=frequency_penalty):
-                print(line)
-        asyncio.run(test())
-
-if __name__ == "__main__":
-    OpenAIInferenceClientTests().test_generate_async_with_streaming()
-    print("Done!")
+        body = {
+            "input": text,
+            "model": self._embeddings_model,
+        }
+        if user:
+            body["user"] = user
+        url = f"{self._host}/{self._version}/embeddings"
+        async with aiohttp.ClientSession(headers=self.headers) as session:
+            async with session.post(url, json=body) as response:
+                return await response.json()
+                    
+    def embeddings(self, text: Union[str, List[dict]], user: Optional[str]=None):
+        return asyncio.run(self._embeddings_async(text, user))
