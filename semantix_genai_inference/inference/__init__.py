@@ -94,7 +94,7 @@ class OpenAIClient(ABC):
         if not api_key:
             api_key = os.environ.get("OPENAI_API_KEY")
         if not api_key:
-            raise Exception("No API key provided. Either pass it as an argument or set the COHERE_API_KEY environment variable.")
+            raise Exception("No API key provided. Either pass it as an argument or set the OPENAI_API_KEY environment variable.")
 
         # set the Authorization header on aiohttp.ClientSession
         self.headers = {
